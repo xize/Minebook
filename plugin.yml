@@ -1,0 +1,20 @@
+name: MineBook
+version: 0.1
+description: MineBook
+author: xize
+authors: [] 
+website:
+
+main: tv.mineinthebox.Minebook.minebook
+database: false
+depend: []
+softdepend: []
+
+commands:
+  minebook:
+    description: minebook
+    aliases: [mb]
+    permission:
+    permission-message:
+
+permissions:

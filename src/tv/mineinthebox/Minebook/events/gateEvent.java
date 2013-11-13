@@ -60,8 +60,6 @@ public class gateEvent implements Listener {
 							Block[] blocks = GateShape.getSelection(e.getClickedBlock().getRelative(s.getAttachedFace()));
 							Block highestBlock = blocks[0];
 							Block lowestBlock = blocks[1];
-							System.out.print("this is block lowest!" + lowestBlock.toString());
-							System.out.print("this is block highest!" + highestBlock.toString());
 							if(toggleGate.ToggleGate(lowestBlock, highestBlock)) {
 								e.getPlayer().sendMessage(ChatColor.GREEN + "Gate toggled!");
 							} else {
@@ -70,9 +68,9 @@ public class gateEvent implements Listener {
 						} else {
 							e.getPlayer().sendMessage(ChatColor.RED + "this gate does not longer work!");
 						}
+					} else {
+						e.getPlayer().sendMessage(ChatColor.RED + "you don't have permission to do this!");
 					}
-				} else {
-					e.getPlayer().sendMessage(ChatColor.RED + "you don't have permission to do this!");
 				}
 			}
 		}

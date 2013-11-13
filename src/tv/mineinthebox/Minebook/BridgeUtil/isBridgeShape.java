@@ -10,7 +10,9 @@ import org.bukkit.material.Sign;
 public class isBridgeShape {
 
 	public static boolean getBridgeShape(Block sign) {
-		Block blockUnderSign = sign.getRelative(BlockFace.DOWN);
+		Block blockUnderSign = sign;
+		System.out.print("this is the sign block: " + sign.getType().name());
+		System.out.print("this is the blockUnderSign: " + blockUnderSign.getType().name());
 		BlockFace[] faces = getAttachedFaces(blockUnderSign);
 		if(faces == null) {
 			return false;
@@ -27,7 +29,10 @@ public class isBridgeShape {
 
 	public static BlockFace[] getAttachedFaces(Block centerblock) {
 		ArrayList<BlockFace> faces = new ArrayList<BlockFace>();
+		System.out.print("this is the sign: " + centerblock.getRelative(BlockFace.UP).getType().name());
+		
 		Sign sign = (Sign) centerblock.getRelative(BlockFace.UP).getState().getData();
+		
 		if(centerblock.getType() != Material.WOOD) {
 			return null;
 		}

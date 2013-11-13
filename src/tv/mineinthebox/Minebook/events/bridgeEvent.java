@@ -21,7 +21,7 @@ public class bridgeEvent implements Listener {
 	public void onSignBridge(SignChangeEvent e) {
 		if(e.getLine(0).equalsIgnoreCase("[Bridge]")) {
 			if(e.getPlayer().hasPermission("minebook.canCreateBridges")) {
-				if(isBridgeShape.getBridgeShape(e.getBlock())) {
+				if(isBridgeShape.getBridgeShape(e.getBlock().getRelative(BlockFace.DOWN))) {
 					if(getSecondBridgeShape.getSecondBridge(e.getBlock())) {
 						e.getPlayer().sendMessage(ChatColor.GREEN + "successfully attached both bridge signs to each other!");
 						e.setLine(0, ChatColor.translateAlternateColorCodes('&', "&1[Bridge]"));
@@ -60,6 +60,9 @@ public class bridgeEvent implements Listener {
 									if(isBridgeShape.getBridgeShape(getSecondSign[0].getRelative(BlockFace.DOWN))) {
 										//now we can proceed toggle the bridge!
 										e.getPlayer().sendMessage("toggle bridge...");
+										block0.setType(Material.GLOWSTONE);
+										block1.setType(Material.GLOWSTONE);
+										
 									} else {
 										e.getPlayer().sendMessage(ChatColor.RED + "the next sign whas found, however the shape has been stated as invalid");
 										e.setCancelled(true);

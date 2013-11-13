@@ -10,7 +10,7 @@ import org.bukkit.material.Sign;
 import tv.mineinthebox.Minebook.configuration;
 
 public class getSecondBridgeShape {
-	
+
 	public static boolean getSecondBridge(Block signBlock) {
 		Sign sign = (Sign) signBlock.getState().getData();
 		BlockFace face = sign.getFacing().getOppositeFace();
@@ -95,7 +95,7 @@ public class getSecondBridgeShape {
 		}
 		return false;
 	}
-	
+
 	public static Block[] getSecondBridgeFromBlock(Block signBlock) {
 		Sign sign = (Sign) signBlock.getState().getData();
 		BlockFace face = sign.getFacing().getOppositeFace();
@@ -111,13 +111,15 @@ public class getSecondBridgeShape {
 			for(int z = signBlock.getZ(); z > (signBlock.getZ()-maxRange); z--) {
 				Block block = signBlock.getWorld().getBlockAt(signBlock.getX(), signBlock.getY(), z);
 				System.out.print("this is the block: " + block.getType().name());
-				if(block.getType() == Material.SIGN_POST) {
-					org.bukkit.block.Sign signn = (org.bukkit.block.Sign) block.getState();
-					if(signn.getLine(0).contains("[Bridge]")) {
-						blocks.add(block);
-						Block[] allBlocks = blocks.toArray(new Block[blocks.size()]);
-						return allBlocks;
-					}
+				if(!block.getLocation().equals(signBlock.getLocation())) {
+					if(block.getType() == Material.SIGN_POST) {
+						org.bukkit.block.Sign signn = (org.bukkit.block.Sign) block.getState();
+						if(signn.getLine(0).contains("[Bridge]")) {
+							blocks.add(block);
+							Block[] allBlocks = blocks.toArray(new Block[blocks.size()]);
+							return allBlocks;
+						}
+					}	
 				}
 			}
 		} else if(face == BlockFace.EAST) {
@@ -128,12 +130,14 @@ public class getSecondBridgeShape {
 			for(int x = signBlock.getX(); x < (signBlock.getX()+maxRange); x++) {
 				Block block = signBlock.getWorld().getBlockAt(x, signBlock.getY(), signBlock.getZ());
 				System.out.print("this is the block: " + block.getType().name());
-				if(block.getType() == Material.SIGN_POST) {
-					org.bukkit.block.Sign signn = (org.bukkit.block.Sign) block.getState();
-					if(signn.getLine(0).contains("[Bridge]")) {
-						blocks.add(block);
-						Block[] allBlocks = blocks.toArray(new Block[blocks.size()]);
-						return allBlocks;
+				if(!block.getLocation().equals(signBlock.getLocation())) {
+					if(block.getType() == Material.SIGN_POST) {
+						org.bukkit.block.Sign signn = (org.bukkit.block.Sign) block.getState();
+						if(signn.getLine(0).contains("[Bridge]")) {
+							blocks.add(block);
+							Block[] allBlocks = blocks.toArray(new Block[blocks.size()]);
+							return allBlocks;
+						}
 					}
 				}
 			}
@@ -145,12 +149,14 @@ public class getSecondBridgeShape {
 			for(int z = signBlock.getZ(); z < (signBlock.getZ()+maxRange); z++) {
 				Block block = signBlock.getWorld().getBlockAt(signBlock.getX(), signBlock.getY(), z);
 				System.out.print("this is the block: " + block.getType().name());
-				if(block.getType() == Material.SIGN_POST) {
-					org.bukkit.block.Sign signn = (org.bukkit.block.Sign) block.getState();
-					if(signn.getLine(0).contains("[Bridge]")) {
-						blocks.add(block);
-						Block[] allBlocks = blocks.toArray(new Block[blocks.size()]);
-						return allBlocks;
+				if(!block.getLocation().equals(signBlock.getLocation())) {
+					if(block.getType() == Material.SIGN_POST) {
+						org.bukkit.block.Sign signn = (org.bukkit.block.Sign) block.getState();
+						if(signn.getLine(0).contains("[Bridge]")) {
+							blocks.add(block);
+							Block[] allBlocks = blocks.toArray(new Block[blocks.size()]);
+							return allBlocks;
+						}
 					}
 				}
 			}
@@ -162,12 +168,14 @@ public class getSecondBridgeShape {
 			for(int x = signBlock.getX(); x > (signBlock.getX()-maxRange); x--) {
 				Block block = signBlock.getWorld().getBlockAt(x, signBlock.getY(), signBlock.getZ());
 				System.out.print("this is the block: " + block.getType().name());
-				if(block.getType() == Material.SIGN_POST) {
-					org.bukkit.block.Sign signn = (org.bukkit.block.Sign) block.getState();
-					if(signn.getLine(0).contains("[Bridge]")) {
-						blocks.add(block);
-						Block[] allBlocks = blocks.toArray(new Block[blocks.size()]);
-						return allBlocks;
+				if(!block.getLocation().equals(signBlock.getLocation())){
+					if(block.getType() == Material.SIGN_POST) {
+						org.bukkit.block.Sign signn = (org.bukkit.block.Sign) block.getState();
+						if(signn.getLine(0).contains("[Bridge]")) {
+							blocks.add(block);
+							Block[] allBlocks = blocks.toArray(new Block[blocks.size()]);
+							return allBlocks;
+						}
 					}
 				}
 			}

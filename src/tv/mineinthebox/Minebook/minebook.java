@@ -1,7 +1,7 @@
 package tv.mineinthebox.Minebook;
 
-import java.util.logging.Logger;
-
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import tv.mineinthebox.Minebook.GateUtil.toggleGate;
@@ -10,7 +10,6 @@ import tv.mineinthebox.Minebook.events.handler;
 public class minebook extends JavaPlugin {
 
 	private static minebook plugin;
-	private static Logger logger = Logger.getLogger("Minecraft");
 	
 	public void onEnable() {
 		plugin = this;
@@ -28,9 +27,9 @@ public class minebook extends JavaPlugin {
 	public static void log(String msg, logType type) {
 		String prefix = plugin.getDescription().getName() + " ";
 		if(type == logType.info) {
-			logger.info(prefix + msg);
+			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + msg));
 		} else if(type == logType.severe) {
-			logger.severe(prefix + msg);
+			Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&c[Warning]"+prefix + msg));
 		}
 	}
 	

@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import tv.mineinthebox.Minebook.BridgeUtil.toggleBridge;
 import tv.mineinthebox.Minebook.GateUtil.toggleGate;
 import tv.mineinthebox.Minebook.events.handler;
 
@@ -17,11 +18,13 @@ public class minebook extends JavaPlugin {
 		configuration.createConfig();
 		handler.runListeners();
 		toggleGate.loadGates();
+		toggleBridge.loadBridges();
 	}
 	
 	public void onDisable(){
 		log("has been disabled!", logType.info);
 		toggleGate.saveGateStatesOnShutDown();
+		toggleBridge.saveBridgeStatesOnShutDown();
 	}
 	
 	public static void log(String msg, logType type) {

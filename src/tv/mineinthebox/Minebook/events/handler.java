@@ -10,9 +10,8 @@ import tv.mineinthebox.Minebook.minebook;
 public class handler {
 	
 	public static void runListeners() {
-		if(configuration.isGatesEnabled()) {
-			setListener(new gateEvent());
-		}
+		if(configuration.isGatesEnabled()) {setListener(new gateEvent());}
+		if(configuration.isElevatorEnabled()){setListener(new elevatorEvent());}
 		if(configuration.isBridgeEnabled()){setListener(new bridgeEvent());}
 	}
 	

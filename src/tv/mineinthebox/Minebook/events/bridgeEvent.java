@@ -14,6 +14,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import tv.mineinthebox.Minebook.configuration;
 import tv.mineinthebox.Minebook.BridgeUtil.getSecondBridgeShape;
 import tv.mineinthebox.Minebook.BridgeUtil.isBridgeShape;
+import tv.mineinthebox.Minebook.BridgeUtil.toggleBridge;
 
 public class bridgeEvent implements Listener {
 	
@@ -58,11 +59,11 @@ public class bridgeEvent implements Listener {
 								System.out.print("block0: " + block0.getType().name() + " block1: " + block1.getType().name());
 								if(getSecondSign.length == 2) {
 									if(isBridgeShape.getBridgeShape(getSecondSign[0].getRelative(BlockFace.DOWN))) {
-										//now we can proceed toggle the bridge!
-										e.getPlayer().sendMessage("toggle bridge...");
-										block0.setType(Material.GLOWSTONE);
-										block1.setType(Material.GLOWSTONE);
-										
+										if(toggleBridge.doToggleBridge(e.getClickedBlock(), block1)) {
+											e.getPlayer().sendMessage(ChatColor.GREEN + "toggled bridge!");
+										} else {
+											e.getPlayer().sendMessage(ChatColor.GREEN + "untoggled bridge!");
+										}
 									} else {
 										e.getPlayer().sendMessage(ChatColor.RED + "the next sign whas found, however the shape has been stated as invalid");
 										e.setCancelled(true);

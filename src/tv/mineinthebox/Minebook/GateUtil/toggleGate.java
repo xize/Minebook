@@ -23,9 +23,7 @@ public class toggleGate {
 			//here we use the z axis
 			if(highestBlock.getZ() < lowestBlock.getZ()) {
 				for(int y = highestBlock.getY(); y >= lowestBlock.getY(); y--) {
-					System.out.print("test");
 					for(int z = highestBlock.getZ(); z < lowestBlock.getZ(); z++) {
-						System.out.print("zCoord");
 						Block block = highestBlock.getWorld().getBlockAt(highestBlock.getX(), y, z);
 						if(block.getType() == Material.AIR) {
 							block.setType(Material.FENCE);
@@ -40,9 +38,7 @@ public class toggleGate {
 				}	
 			} else if(highestBlock.getZ() > lowestBlock.getZ()) {
 				for(int y = highestBlock.getY(); y >= lowestBlock.getY(); y--) {
-					System.out.print("test");
 					for(int z = highestBlock.getZ(); z > lowestBlock.getZ(); z--) {
-						System.out.print("zCoord");
 						Block block = highestBlock.getWorld().getBlockAt(highestBlock.getX(), y, z);
 						if(block.getType() == Material.AIR) {
 							block.setType(Material.FENCE);
@@ -60,9 +56,7 @@ public class toggleGate {
 			//here we use the x axis
 			if(highestBlock.getX() < lowestBlock.getX()) {
 				for(int y = highestBlock.getY(); y >= lowestBlock.getY(); y--) {
-					System.out.print("test");
 					for(int x = highestBlock.getX(); x < lowestBlock.getX(); x++) {
-						System.out.print("xCoord");
 						Block block = highestBlock.getWorld().getBlockAt(x, y, highestBlock.getZ());
 						if(block.getType() == Material.AIR) {
 							block.setType(Material.FENCE);
@@ -77,9 +71,7 @@ public class toggleGate {
 				}	
 			} else if(highestBlock.getX() > lowestBlock.getX()) {
 				for(int y = highestBlock.getY(); y >= lowestBlock.getY(); y--) {
-					System.out.print("test");
 					for(int x = highestBlock.getX(); x > lowestBlock.getX(); x--) {
-						System.out.print("xCoord");
 						Block block = highestBlock.getWorld().getBlockAt(x, y, highestBlock.getZ());
 						if(block.getType() == Material.AIR) {
 							block.setType(Material.FENCE);
@@ -158,7 +150,6 @@ public class toggleGate {
 				ArrayList<Block> blocks = Deserialize(con);
 				for(Block block : blocks) {
 					protectedFences.add(block);
-					System.out.print("added new block: " + block.toString());
 				}
 			}
 		} catch(Exception e) {

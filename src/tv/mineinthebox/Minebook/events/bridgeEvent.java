@@ -58,9 +58,7 @@ public class bridgeEvent implements Listener {
 							if(getSecondBridgeShape.getSecondBridge(e.getClickedBlock())) {
 								//Explanation, 1 is the block itself and 1 is the next sign block we need to check its shape.
 								Block[] getSecondSign = getSecondBridgeShape.getSecondBridgeFromBlock(e.getClickedBlock());
-								Block block0 = getSecondSign[0];
 								Block block1 = getSecondSign[1];
-								System.out.print("block0: " + block0.getType().name() + " block1: " + block1.getType().name());
 								if(getSecondSign.length == 2) {
 									if(isBridgeShape.getBridgeShape(getSecondSign[0].getRelative(BlockFace.DOWN))) {
 										if(toggleBridge.doToggleBridge(e.getClickedBlock(), block1)) {

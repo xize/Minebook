@@ -70,9 +70,6 @@ public class GateShape {
 		}
 		//now we check if all two of the pilars have the same height, and the balk is not empty!
 		
-		System.out.print("size of SignPilar: " + SignPilar.size());
-		System.out.print("size of SecondPilar: " + secondPilar.size());
-		System.out.print("size of balk: " + balk.size());
 		if(SignPilar.size() == secondPilar.size() && !balk.isEmpty()) {
 			return true;
 		}
@@ -82,8 +79,6 @@ public class GateShape {
 	public static Block[] getSelection(Block behindSign) {
 		int maxHeight = configuration.getGateSize()[0];
 		int maxWidth = configuration.getGateSize()[1];
-		
-		System.out.print("this is the height: " + maxHeight + " and this is the width: " + maxWidth);
 		
 		Block onGround = behindSign.getRelative(BlockFace.DOWN);
 		
@@ -141,10 +136,6 @@ public class GateShape {
 			}
 		}
 		//now we check if all two of the pilars have the same height, and the balk is not empty!
-		
-		System.out.print("size of SignPilar: " + SignPilar.size());
-		System.out.print("size of SecondPilar: " + secondPilar.size());
-		System.out.print("size of balk: " + balk.size());
 		if(SignPilar.size() == secondPilar.size() && !balk.isEmpty()) {
 			ArrayList<Block> stackBlocks = new ArrayList<Block>();
 			stackBlocks.add(secondPilarBlock);

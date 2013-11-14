@@ -9,7 +9,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPistonExtendEvent;
+import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.block.SignChangeEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import tv.mineinthebox.Minebook.configuration;
@@ -18,7 +21,7 @@ import tv.mineinthebox.Minebook.BridgeUtil.isBridgeShape;
 import tv.mineinthebox.Minebook.BridgeUtil.toggleBridge;
 
 public class bridgeEvent implements Listener {
-	
+
 	@EventHandler
 	public void onSignBridge(SignChangeEvent e) {
 		if(e.getLine(0).equalsIgnoreCase("[Bridge]")) {
@@ -43,7 +46,7 @@ public class bridgeEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void toggleSign(PlayerInteractEvent e) {
 		if(e.getAction() == Action.RIGHT_CLICK_BLOCK) {
@@ -89,12 +92,37 @@ public class bridgeEvent implements Listener {
 			}
 		}
 	}
-	
+
 	@EventHandler
 	public void breakBlock(BlockBreakEvent e) {
 		if(toggleBridge.protectedBridges.contains(e.getBlock())) {
 			e.setCancelled(true);
 			e.getPlayer().sendMessage(ChatColor.RED + "you are not allowed to break this bridge block!");
+		}
+	}
+
+	@EventHandler
+	public void explosion(EntityExplodeEvent e) {
+		for(Block block : e.blockList()) {
+			if(toggleBridge.protectedBridges.contains(block)) {
+				e.setCancelled(true);
+			}
+		}
+	}
+
+	@EventHandler
+	public void piston(BlockPistonExtendEvent e) {
+		for(Block block : e.getBlocks()) {
+			if(toggleBridge.protectedBridges.contains(block)) {
+				e.setCancelled(true);
+			}
+		}
+	}
+
+	@EventHandler
+	public void piston(BlockPistonRetractEvent e) {
+		if(toggleBridge.protectedBridges.contains(e.getRetractLocation().getBlock())) {
+			e.setCancelled(true);
 		}
 	}
 }

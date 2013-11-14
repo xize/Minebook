@@ -7,7 +7,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPistonExtendEvent;
+import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.block.SignChangeEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.material.Sign;
 
@@ -73,6 +76,31 @@ public class gateEvent implements Listener {
 					}
 				}
 			}
+		}
+	}
+	
+	@EventHandler
+	public void explosion(EntityExplodeEvent e) {
+		for(Block block : e.blockList()) {
+			if(toggleGate.protectedFences.contains(block)) {
+				e.setCancelled(true);
+			}
+		}
+	}
+	
+	@EventHandler
+	public void piston(BlockPistonExtendEvent e) {
+		for(Block block : e.getBlocks()) {
+			if(toggleGate.protectedFences.contains(block)) {
+				e.setCancelled(true);
+			}
+		}
+	}
+
+	@EventHandler
+	public void piston(BlockPistonRetractEvent e) {
+		if(toggleGate.protectedFences.contains(e.getRetractLocation().getBlock())) {
+			e.setCancelled(true);
 		}
 	}
 	
